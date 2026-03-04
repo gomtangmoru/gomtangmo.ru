@@ -16,24 +16,88 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Initialize Vanta.js background with optimized settings
-    if (typeof VANTA !== 'undefined') {
-        VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: false, // Disabling this saves massive CPU (raycasting)
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0xd2a8ff,
-            backgroundColor: 0x0b0c10,
-            points: 12.00,
-            maxDistance: 22.00,
-            spacing: 18.00
+    // 2. Initialize Particles.js background
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 60,
+                    density: {
+                        enable: true,
+                        value_area: 900
+                    }
+                },
+                color: {
+                    value: '#d2a8ff'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.5,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#d2a8ff',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1.5,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 180,
+                        line_linked: {
+                            opacity: 0.4
+                        }
+                    },
+                    push: {
+                        particles_nb: 3
+                    }
+                }
+            },
+            retina_detect: true
         });
     } else {
-        console.error("Vanta.js is not loaded.");
+        console.error('Particles.js is not loaded.');
     }
 });

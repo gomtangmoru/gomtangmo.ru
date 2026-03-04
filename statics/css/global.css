@@ -1,0 +1,316 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+    --bg-color: #0b0c10;
+    --text-color: #e2e8f0;
+    --card-bg: #15161e;
+    /* Soft dark pink/purple blend */
+    --accent: #d2a8ff;
+    --accent-hover: #e5c3ff;
+    --border-color: #2b2836;
+    --card-shadow: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    margin: 0;
+    padding: 2rem 0;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    /* Default fallback */
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Vanta Container */
+#vanta-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* Behind the container */
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    /* Optimal soft glass effect using transparency and highlight borders instead of heavy GPU blurring */
+    background-color: rgba(21, 22, 30, 0.85);
+    /* Less transparent to improve readability */
+    backdrop-filter: blur(8px);
+    /* Subtle blur added back */
+    -webkit-backdrop-filter: blur(8px);
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.00) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 4rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px var(--card-shadow);
+    /* Expand the layout to take up about 70% of the page width */
+    max-width: 900px;
+    width: 70%;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    animation: fadeIn 0.8s ease-out;
+}
+
+header {
+    margin-bottom: 2.5rem;
+}
+
+/* Profile Image Styles */
+.profile-img-container {
+    margin: 0 0 2rem 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(210, 168, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(210, 168, 255, 0.3);
+    border-color: var(--accent);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin: 0 0 0.5rem 0;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--accent);
+    margin: 0;
+    font-weight: 500;
+}
+
+.contact-email {
+    margin-top: 1.2rem;
+    font-size: 1.05rem;
+}
+
+.contact-email a {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(226, 232, 240, 0.3);
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.contact-email a:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--accent-hover);
+}
+
+.about {
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+    margin-top: 1rem;
+}
+
+.about h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2.5rem 2.5rem;
+    margin: 0;
+    max-width: 100%;
+}
+
+.info-card p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 0.5rem 0;
+    color: #cbd5e1;
+}
+
+.info-card strong {
+    color: var(--accent-hover);
+    font-weight: 600;
+}
+
+.career-history {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.career-history h3 {
+    font-size: 1.15rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.career-history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.career-history li {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 0.8rem;
+    padding: 0.8rem 1.2rem;
+    background: rgba(210, 168, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(210, 168, 255, 0.1);
+}
+
+.career-history .period {
+    font-family: monospace;
+    font-size: 1.05rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.career-history .school {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Status Styles */
+.career-history li.status-dropout {
+    background: rgba(255, 107, 107, 0.08);
+    border: 1px solid rgba(255, 107, 107, 0.2);
+    border-left: 4px solid #ff6b6b;
+}
+
+.career-history li.status-leave {
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-left: 4px solid #94a3b8;
+}
+
+.career-history li.status-army {
+    background: rgba(16, 185, 129, 0.08);
+    /* Green emphasize */
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-left: 4px solid #10b981;
+}
+
+/* Badge Styles */
+.badge {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-left: 1rem;
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+.badge-dropout {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff6b6b;
+}
+
+.badge-leave {
+    background: rgba(148, 163, 184, 0.15);
+    color: #cbd5e1;
+}
+
+.badge-army {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+
+
+/* Links Section */
+.links-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+    margin-top: 3rem;
+}
+
+.links-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.links-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.link-item:hover {
+    background: rgba(210, 168, 255, 0.15);
+    border-color: var(--accent);
+    color: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(210, 168, 255, 0.2);
+}
+
+.link-item .icon {
+    font-size: 1.2rem;
+}
+
+footer {
+    margin-top: auto;
+    padding-top: 4rem;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

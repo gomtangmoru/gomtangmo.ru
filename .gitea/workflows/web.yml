@@ -13,4 +13,4 @@ jobs:
         run: uv sync
       - name: deploy
         # https://stackoverflow.com/questions/818255/what-does-21-mean
-        run: nohup uv run gunicorn main:app --bind 0.0.0.0:8000 > app.log 2>&1 &
+        run: setsid uv run gunicorn main:app --bind 0.0.0.0:8000 > app.log 2>&1 &

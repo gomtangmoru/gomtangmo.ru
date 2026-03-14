@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   auto-deploy:
-    runs-on: lxc-web
+    runs-on: netlxc
     steps:
       - name: pull
         uses: actions/checkout@v4

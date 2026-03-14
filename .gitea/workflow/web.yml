@@ -1,0 +1,13 @@
+name: Web
+on: [push]
+
+jobs:
+  auto-deploy:
+    runs-on: lxc-web
+    steps:
+      - name: pull
+        uses: actions/checkout@v4
+      - name: sync-uv
+        uses: uv sync
+      - name: deploy
+        run: uv run ./run.sh

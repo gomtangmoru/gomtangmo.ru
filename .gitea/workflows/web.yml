@@ -8,6 +8,6 @@ jobs:
       - name: pull
         uses: actions/checkout@v4
       - name: sync-uv
-        uses: uv sync
+        run: uv sync
       - name: deploy
         run: uv run ./run.sh

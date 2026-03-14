@@ -10,4 +10,6 @@ jobs:
       - name: sync-uv
         run: uv sync
       - name: deploy
-        run: uv run ./run.sh
+        run: | 
+          chmod +x ./run.sh
+          uv run ./run.sh

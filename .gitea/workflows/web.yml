@@ -1,16 +1,15 @@
 name: Web
-on: [push]
+on:
+  push:
+    branches: master
 
 jobs:
   auto-deploy:
-    runs-on: netlxc
+    runs-on: RackDockerLXC
     steps:
-      - name: kill-gunicorn
-        run: pkill gunicorn || true
       - name: pull
         uses: actions/checkout@v4
-      - name: sync-uv
-        run: uv sync
+      - name: build-docker
+        run: docker build -t web .
       - name: deploy
-        # https://stackoverflow.com/questions/818255/what-does-21-mean
-        run: setsid uv run gunicorn main:app --bind 0.0.0.0:8000 > app.log 2>&1 &
+        run: setsid docker run -d -p 8000:8000 web

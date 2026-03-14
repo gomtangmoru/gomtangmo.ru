@@ -5,9 +5,11 @@ jobs:
   auto-deploy:
     runs-on: netlxc
     steps:
+      - name: kill-gunicorn
+        run: pkill gunicorn || true
       - name: pull
         uses: actions/checkout@v4
       - name: sync-uv
         run: uv sync
       - name: deploy
-        run: gunicorn main:app --bind 0.0.0.0:8000
+        run: uv run gunicorn main:app --bind 0.0.0.0:8000

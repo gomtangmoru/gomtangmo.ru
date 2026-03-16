@@ -22,7 +22,7 @@
     <meta name="theme-color" content="#0b0c10">
 
     <!-- Favicon (브라우저 탭 아이콘에 프로필 사진 적용) -->
-    <link rel="icon" href="{{ url_for('static', filename='img/profile.png') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/profile.webp') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <script type="text/javascript">
@@ -43,7 +43,15 @@
                 <img class="profile-img" src="{{ url_for('static', filename='img/profile.webp') }}"
                     alt="Art By CLdream">
             </div>
-            <h1>JaeYoung Ryu</h1>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                <h1 style="margin: 0;">JaeYoung Ryu</h1>
+                <a href="https://ko-fi.com/gomtangmoru" target="_blank"
+                    style="display: inline-flex; align-items: center; justify-content: center; background-color: #FF5E5B; color: white; padding: 0 12px; border-radius: 8px; text-decoration: none; font-weight: bold; font-family: sans-serif; height: 35px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi"
+                        style="width: 22px; margin-right: 8px; vertical-align: middle;">
+                    Buy me a burger 🍔
+                </a>
+            </div>
             <p class="subtitle">Cloud & DevOps Engineer Aspirant</p>
             <div class="contact-email">
                 <a href="mailto:admin@gomtangmo.ru">admin@gomtangmo.ru</a>

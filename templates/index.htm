@@ -16,7 +16,7 @@
 
     <!-- Open Graph (카카오톡, 디스코드, 링크드인 공유 시 뜨는 썸네일/미리보기) -->
     <meta property="og:title" content="반가워오">
-    <meta property="og:image" content="{{ url_for('static', filename='img/profile.png') }}">
+    <meta property="og:image" content="{{ url_for('static', filename='img/profile.webp') }}">
     <meta property="og:type" content="website">
 
     <!-- 모바일 브라우저 테마 색상 (주소창 색상 변경) -->
@@ -42,7 +42,7 @@
         <header>
             <div class="profile-img-container" id="profileImageContainer">
                 <img class="profile-img" src="{{ url_for('static', filename='img/profile.webp') }}"
-                    alt="Art By CLdream">
+                    alt="Art By cldream0111">
             </div>
             <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
                 <h1 style="margin: 0;">JaeYoung Ryu</h1>
@@ -102,6 +102,8 @@
                         style="padding: 0.5rem 1rem; background: rgba(210, 168, 255, 0.1); color: #d2a8ff; border: 1px solid rgba(210, 168, 255, 0.2); border-radius: 20px; font-weight: 500;">Network</span>
                     <span class="skill-tag"
                         style="padding: 0.5rem 1rem; background: rgba(210, 168, 255, 0.1); color: #e16207; border: 1px solid rgba(225, 98, 7, 0.2); border-radius: 20px; font-weight: 500;">Proxmox</span>
+                    <span class="skill-tag"
+                        style="padding: 0.5rem 1rem; background: rgba(210, 168, 255, 0.1); color: #e16207; border: 1px solid rgba(225, 98, 7, 0.2); border-radius: 20px; font-weight: 500;">CI/CD</span>
                 </div>
             </section>
 
@@ -128,6 +130,7 @@
             <p>&copy; 2026-2026 JaeYoung Ryu. All rights reserved.</p>
         </footer>
     </div>
+    <a href="https://layable.kr" target="_blank" style="position: fixed; bottom: 10px; right: 15px; font-size: 0.75rem; color: #666; text-decoration: none; z-index: 9999; opacity: 0.5; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">Special Thanks by Layable</a>
 
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>

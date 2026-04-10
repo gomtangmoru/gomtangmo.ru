@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Page Not Found</title>
+
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="theme-color" content="#0b0c10">
+
+    <link rel="icon" href="{{ url_for('static', filename='img/profile.webp') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <header>
+            <h1 style="margin: 0; text-align: center;">404 Page Not Found</h1>
+        </header>
+
+        <main>
+            <section class="about" style="margin-top: 0; text-align: center;">
+                <p style="margin: 0; font-size: 1.05rem; color: #cbd5e1;">주소가 잘못되었거나 페이지가 이동 또는 삭제되었을 수 있습니다.</p>
+            </section>
+
+            <section class="links-section">
+                <h2>Quick Links</h2>
+                <div class="links-container">
+                    <a href="/" class="link-item">
+                        <span class="icon" aria-hidden="true">🏠</span>
+                        <span class="link-content">
+                            <strong>Back To Home</strong>
+                            <small>Return to main page</small>
+                        </span>
+                        <span class="link-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026-2026 JaeYoung Ryu. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/root.js') }}"></script>
+</body>
+
+</html>

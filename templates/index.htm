@@ -25,6 +25,7 @@
     <!-- Favicon (브라우저 탭 아이콘에 프로필 사진 적용) -->
     <link rel="icon" href="{{ url_for('static', filename='img/profile.webp') }}">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
@@ -44,10 +45,10 @@
                 <img class="profile-img" src="{{ url_for('static', filename='img/profile.webp') }}"
                     alt="Art By cldream0111">
             </div>
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+            <div class="header-top-row">
                 <h1 style="margin: 0;">JaeYoung Ryu</h1>
                 <a href="https://ko-fi.com/gomtangmoru" target="_blank"
-                    style="display: inline-flex; align-items: center; justify-content: center; background-color: #FF5E5B; color: white; padding: 0 12px; border-radius: 8px; text-decoration: none; font-weight: bold; font-family: sans-serif; height: 35px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    class="kofi-btn">
                     <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi"
                         style="width: 22px; margin-right: 8px; vertical-align: middle;">
                     Buy me a burger 🍔
@@ -66,7 +67,7 @@
                     <p><strong>DevOps 지망생</strong>입니다. 리눅스, 컨테이너, 그리고 인프라에 손대는 것을 좋아합니다.</p>
                     <p style="margin-top: 1rem; color: #a1a1aa; font-style: italic;">치킨먹고싶다. 🍗</p>
                     <div class="career-history">
-                        <h3>경력</h3>
+                        <h3>History</h3>
                         <ul>
                             <li class="status-dropout">
                                 <span class="period">2024.03. ~ 2026.03.</span>
@@ -77,33 +78,68 @@
                                 <span class="period">2026.03. ~ 현재</span>
                                 <span class="school">한남대학교 컴퓨터공학과 3학년 <span class="badge badge-leave">휴학</span></span>
                             </li>
-                            <li class="status-army">
+                            <li class="status-navy">
                                 <span class="period">2026.04. ~ 2027.12.</span>
-                                <span class="school">해군 정보통신병 병 724기 <span class="badge badge-army">입대예정</span></span>
+                                <span class="school">대한민국 해군 제724기, 정보통신병 12기 <span class="badge badge-navy">복무 예정</span></span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <section class="skills-section"
-                style="border-top: 1px solid var(--border-color); padding-top: 3rem; margin-top: 3rem;">
-                <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: #ffffff;">Tech Stack</h2>
-                <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
-                    <span class="skill-tag"
-                        style="padding: 0.5rem 1rem; background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 20px; font-weight: 500;">Docker</span>
-                    <span class="skill-tag"
-                        style="padding: 0.5rem 1rem; background: rgba(240, 80, 50, 0.1); color: #f05032; border: 1px solid rgba(240, 80, 50, 0.2); border-radius: 20px; font-weight: 500;">Git</span>
-                    <span class="skill-tag"
-                        style="padding: 0.5rem 1rem; background: rgba(227, 79, 38, 0.1); color: #e34f26; border: 1px solid rgba(227, 79, 38, 0.2); border-radius: 20px; font-weight: 500;">Linux</span>
-                    <span class="skill-tag"
-                        style="padding: 0.5rem 1rem; background: rgba(55, 118, 171, 0.1); color: #3776ab; border: 1px solid rgba(55, 118, 171, 0.2); border-radius: 20px; font-weight: 500;">Python</span>
-                    <span class="skill-tag"
-                        style="padding: 0.5rem 1rem; background: rgba(210, 168, 255, 0.1); color: #d2a8ff; border: 1px solid rgba(210, 168, 255, 0.2); border-radius: 20px; font-weight: 500;">Network</span>
-                    <span class="skill-tag"
-                        style="padding: 0.5rem 1rem; background: rgba(210, 168, 255, 0.1); color: #e16207; border: 1px solid rgba(225, 98, 7, 0.2); border-radius: 20px; font-weight: 500;">Proxmox</span>
-                    <span class="skill-tag"
-                        style="padding: 0.5rem 1rem; background: rgba(210, 168, 255, 0.1); color: #e16207; border: 1px solid rgba(225, 98, 7, 0.2); border-radius: 20px; font-weight: 500;">CI/CD</span>
+            <section class="skills-section">
+                <h2>Tech Stack</h2>
+
+                <div class="stack-groups">
+                    <article class="stack-group">
+                        <h3>Infrastructure</h3>
+                        <div class="stack-items">
+                            <span class="stack-item">
+                                <img class="simple-icon" src="https://cdn.simpleicons.org/linux/FFFFFF" alt="Linux icon">
+                                Linux
+                            </span>
+                            <span class="stack-item">
+                                <i class="devicon-docker-plain colored" aria-hidden="true"></i>
+                                Docker
+                            </span>
+                            <span class="stack-item">
+                                <img class="simple-icon" src="https://cdn.simpleicons.org/proxmox/E57000" alt="Proxmox icon">
+                                Proxmox
+                            </span>
+                        </div>
+                    </article>
+
+                    <article class="stack-group">
+                        <h3>CI/CD &amp; Tools</h3>
+                        <div class="stack-items">
+                            <span class="stack-item">
+                                <i class="devicon-git-plain colored" aria-hidden="true"></i>
+                                Git
+                            </span>
+                            <span class="stack-item">
+                                <img class="simple-icon" src="https://cdn.simpleicons.org/githubactions/2088FF" alt="CI/CD icon">
+                                CI/CD
+                            </span>
+                            <span class="stack-item">
+                                <img class="simple-icon" src="https://cdn.simpleicons.org/gitea/609926" alt="Gitea icon">
+                                Gitea
+                            </span>
+                        </div>
+                    </article>
+
+                    <article class="stack-group">
+                        <h3>Language &amp; Network</h3>
+                        <div class="stack-items">
+                            <span class="stack-item">
+                                <i class="devicon-python-plain colored" aria-hidden="true"></i>
+                                Python
+                            </span>
+                            <span class="stack-item">
+                                <img class="simple-icon" src="https://cdn.simpleicons.org/openwrt/00B5E2" alt="OpenWrt icon">
+                                Network
+                            </span>
+                        </div>
+                    </article>
                 </div>
             </section>
 
@@ -111,16 +147,36 @@
                 <h2>Links</h2>
                 <div class="links-container">
                     <a href="https://blog.gomtangmo.ru" target="_blank" class="link-item">
-                        <span class="icon">📝</span> Blog
+                        <span class="icon" aria-hidden="true"><img class="link-icon-img" src="https://cdn.simpleicons.org/ghost/FFFFFF" alt="Ghost Blog icon"></span>
+                        <span class="link-content">
+                            <strong>Blog</strong>
+                            <small>blog.gomtangmo.ru</small>
+                        </span>
+                        <span class="link-arrow" aria-hidden="true">↗</span>
                     </a>
                     <a href="https://linkedin.com/in/jaeyoungryu" target="_blank" class="link-item">
-                        <span class="icon">📱</span> LinkedIn
+                        <span class="icon" aria-hidden="true"><i class="devicon-linkedin-plain colored link-icon-font"></i></span>
+                        <span class="link-content">
+                            <strong>LinkedIn</strong>
+                            <small>linkedin.com/in/jaeyoungryu</small>
+                        </span>
+                        <span class="link-arrow" aria-hidden="true">↗</span>
                     </a>
                     <a href="https://github.com/gomtangmoru" target="_blank" class="link-item">
-                        <span class="icon">💻</span> GitHub
+                        <span class="icon" aria-hidden="true"><img class="link-icon-img" src="https://cdn.simpleicons.org/github/FFFFFF" alt="GitHub icon"></span>
+                        <span class="link-content">
+                            <strong>GitHub</strong>
+                            <small>github.com/gomtangmoru</small>
+                        </span>
+                        <span class="link-arrow" aria-hidden="true">↗</span>
                     </a>
                     <a href="https://vcs.gomtangmo.ru/gomtangmoru" target="_blank" class="link-item">
-                        <span class="icon">☕️</span> Gitea(VCS)
+                        <span class="icon" aria-hidden="true"><img class="link-icon-img" src="https://cdn.simpleicons.org/gitea/609926" alt="Gitea icon"></span>
+                        <span class="link-content">
+                            <strong>Gitea(VCS)</strong>
+                            <small>vcs.gomtangmo.ru</small>
+                        </span>
+                        <span class="link-arrow" aria-hidden="true">↗</span>
                     </a>
                 </div>
             </section>

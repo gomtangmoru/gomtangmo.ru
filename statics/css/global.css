@@ -4,9 +4,8 @@
     --bg-color: #0b0c10;
     --text-color: #e2e8f0;
     --card-bg: #15161e;
-    /* Soft dark pink/purple blend */
-    --accent: #d2a8ff;
-    --accent-hover: #e5c3ff;
+    --accent: #ffb38a;
+    --accent-hover: #ffd6bf;
     --border-color: #2b2836;
     --card-shadow: rgba(0, 0, 0, 0.4);
 }
@@ -24,6 +23,19 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        radial-gradient(72% 55% at 50% 50%, rgba(16, 18, 26, 0) 25%, rgba(7, 9, 14, 0.34) 100%),
+        linear-gradient(180deg, rgba(6, 8, 12, 0.12) 0%, rgba(6, 8, 12, 0.2) 100%);
 }
 
 /* Background Particles Container */
@@ -64,8 +76,46 @@ body {
     animation: fadeIn 0.8s ease-out;
 }
 
+.container::before {
+    content: "";
+    position: absolute;
+    inset: -32px;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(55% 45% at 50% 35%, rgba(255, 179, 138, 0.15), rgba(255, 179, 138, 0));
+}
+
 header {
     margin-bottom: 2.5rem;
+}
+
+.header-top-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.kofi-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff5e5b;
+    color: #fff;
+    padding: 0 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: sans-serif;
+    height: 35px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.kofi-btn:hover {
+    color: #fff;
+    transform: translateY(-1px);
 }
 
 /* Profile Image Styles */
@@ -107,28 +157,49 @@ header a:hover {
 }
 
 .subtitle {
-    font-size: 1.25rem;
-    color: var(--accent);
+    font-size: 1.3rem;
+    color: #ffd6bf;
     margin: 0;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .contact-email {
-    margin-top: 1.2rem;
-    font-size: 1.05rem;
+    margin-top: 1rem;
+    font-size: 1.12rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.48rem 0.82rem;
+    border-radius: 10px;
+    background: rgba(15, 23, 42, 0.48);
+    border: 1px solid rgba(148, 163, 184, 0.26);
+    max-width: 100%;
+}
+
+.contact-email::before {
+    content: "Email";
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #b6c3d8;
+    opacity: 0.95;
 }
 
 .contact-email a {
-    color: var(--text-color);
+    color: #f8fbff;
     text-decoration: none;
-    border-bottom: 1px dashed rgba(226, 232, 240, 0.3);
-    padding-bottom: 2px;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    word-break: break-all;
     transition: all 0.3s ease;
 }
 
 .contact-email a:hover {
     color: var(--accent-hover);
-    border-bottom-color: var(--accent-hover);
+    text-shadow: 0 0 12px rgba(255, 214, 191, 0.28);
 }
 
 .about {
@@ -147,14 +218,14 @@ header a:hover {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-    padding: 2.5rem 2.5rem;
+    padding: 1.25rem;
     margin: 0;
     max-width: 100%;
 }
 
 .info-card p {
-    font-size: 1.15rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.75;
     margin: 0.5rem 0;
     color: #cbd5e1;
 }
@@ -165,8 +236,8 @@ header a:hover {
 }
 
 .career-history {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1.6rem;
+    padding-top: 1.25rem;
     border-top: 1px dashed rgba(255, 255, 255, 0.1);
 }
 
@@ -206,6 +277,7 @@ header a:hover {
 .career-history .school {
     font-size: 1.1rem;
     font-weight: 500;
+    min-width: 0;
 }
 
 /* Status Styles */
@@ -221,11 +293,10 @@ header a:hover {
     border-left: 4px solid #94a3b8;
 }
 
-.career-history li.status-army {
-    background: rgba(16, 185, 129, 0.08);
-    /* Green emphasize */
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    border-left: 4px solid #10b981;
+.career-history li.status-navy {
+    background: rgba(30, 58, 138, 0.08);
+    border: 1px solid rgba(30, 58, 138, 0.2);
+    border-left: 4px solid #1e3a8a;
 }
 
 /* Badge Styles */
@@ -248,9 +319,69 @@ header a:hover {
     color: #cbd5e1;
 }
 
-.badge-army {
-    background: rgba(16, 185, 129, 0.15);
-    color: #10b981;
+.badge-navy {
+    background: #1f2937;
+    color: #d1d5db;
+}
+
+
+/* Skills Section */
+.skills-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+    margin-top: 3rem;
+}
+
+.skills-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.stack-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+}
+
+.stack-group {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.stack-group h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1rem;
+    color: #cbd5e1;
+    letter-spacing: 0.3px;
+}
+
+.stack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.stack-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.62rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    color: #e2e8f0;
+    font-size: 0.98rem;
+    font-weight: 500;
+}
+
+.stack-item i,
+.stack-item .simple-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
 
 
@@ -269,44 +400,252 @@ header a:hover {
 }
 
 .links-container {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
 }
 
 .link-item {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 12px;
     color: var(--text-color);
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
 }
 
 .link-item:hover {
-    background: rgba(210, 168, 255, 0.15);
+    background: rgba(255, 179, 138, 0.12);
     border-color: var(--accent);
-    color: var(--accent-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(210, 168, 255, 0.2);
+    color: var(--text-color);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(255, 179, 138, 0.22);
 }
 
 .link-item .icon {
-    font-size: 1.2rem;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.link-icon-img {
+    width: 19px;
+    height: 19px;
+    display: block;
+}
+
+.link-icon-font {
+    font-size: 19px;
+    line-height: 1;
+}
+
+.link-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.link-content strong {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.link-content small {
+    color: #94a3b8;
+    font-size: 0.83rem;
+    min-height: 1.1rem;
+}
+
+.link-arrow {
+    margin-left: auto;
+    color: #9eb2cf;
+    font-size: 1rem;
+    transform: translateX(0);
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.link-item:hover .link-arrow {
+    transform: translateX(4px);
+    color: #ffe8db;
 }
 
 footer {
     margin-top: auto;
     padding-top: 4rem;
-    font-size: 0.9rem;
-    color: #64748b;
+    font-size: 0.95rem;
+    color: #7f8fa8;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: min(92%, 900px);
+        padding: 2.4rem 2rem;
+    }
+
+    .career-history li {
+        gap: 1rem;
+    }
+
+    .career-history .period {
+        width: 190px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0;
+    }
+
+    .container {
+        width: 94%;
+        padding: 1.4rem 1rem;
+        border-radius: 14px;
+        min-height: auto;
+    }
+
+    header {
+        margin-bottom: 2rem;
+    }
+
+    .profile-img-container {
+        width: 108px;
+        height: 108px;
+        margin-bottom: 1.2rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .header-top-row {
+        align-items: flex-start;
+        gap: 0.65rem;
+    }
+
+    .kofi-btn {
+        height: 34px;
+        font-size: 0.85rem;
+        padding: 0 10px;
+    }
+
+    .subtitle {
+        font-size: 1.06rem;
+    }
+
+    .contact-email {
+        font-size: 0.95rem;
+        padding: 0.42rem 0.65rem;
+    }
+
+    .contact-email::before {
+        font-size: 0.7rem;
+    }
+
+    .about,
+    .skills-section,
+    .links-section {
+        padding-top: 2rem;
+        margin-top: 2rem;
+    }
+
+    .about h2,
+    .skills-section h2,
+    .links-section h2 {
+        font-size: 1.45rem;
+        margin-bottom: 1rem;
+    }
+
+    .info-card,
+    .stack-group,
+    .link-item {
+        padding: 1rem;
+    }
+
+    .info-card p {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .career-history li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.45rem;
+        padding: 0.75rem 0.8rem;
+    }
+
+    .career-history .period {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .career-history .school {
+        font-size: 1rem;
+    }
+
+    .badge {
+        margin-left: 0.5rem;
+    }
+
+    .stack-groups {
+        grid-template-columns: 1fr;
+    }
+
+    .stack-item {
+        font-size: 0.9rem;
+        padding: 0.55rem 0.82rem;
+    }
+
+    .stack-item i,
+    .stack-item .simple-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 18px;
+    }
+
+    .links-container {
+        grid-template-columns: 1fr;
+    }
+
+    .link-item {
+        gap: 0.62rem;
+    }
+
+    .link-content strong {
+        font-size: 0.95rem;
+    }
+
+    .link-content small {
+        font-size: 0.8rem;
+    }
+
+    footer {
+        padding-top: 2.2rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 420px) {
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    .kofi-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @keyframes fadeIn {

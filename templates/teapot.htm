@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>418 | I'm a teapot</title>
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="theme-color" content="#0b0c10">
+    <link rel="icon" href="{{ url_for('static', filename='img/profile.webp') }}">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            background:
+                radial-gradient(750px 450px at 85% -10%, rgba(255, 179, 138, 0.18), transparent 62%),
+                radial-gradient(520px 300px at 0% 95%, rgba(67, 217, 173, 0.13), transparent 62%),
+                linear-gradient(145deg, #0b0d13 0%, #141827 48%, #101523 100%);
+            color: #e6eef8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 1.1rem;
+        }
+
+        .teapot-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2.2rem;
+            max-width: 760px;
+            width: 100%;
+            background: rgba(16, 20, 31, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.23);
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.36);
+            animation: fadeIn 0.55s ease-out;
+            position: relative;
+        }
+
+        .teapot-container::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 18px;
+            pointer-events: none;
+            background: linear-gradient(120deg, rgba(255, 179, 138, 0.15), rgba(67, 217, 173, 0.1));
+            z-index: -1;
+            filter: blur(18px);
+        }
+
+        .icon-side {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .teapot-icon {
+            width: 130px;
+            height: 130px;
+            position: relative;
+        }
+
+        .teapot-icon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 16px rgba(255, 179, 138, 0.25));
+        }
+
+        .text-side {
+            text-align: left;
+            flex: 1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #ffcfb3;
+            background: rgba(255, 179, 138, 0.12);
+            border: 1px solid rgba(255, 179, 138, 0.38);
+            border-radius: 999px;
+            padding: 0.28rem 0.62rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .error-code {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.6px;
+            margin-bottom: 0.4rem;
+            line-height: 1.05;
+        }
+
+        h1 {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #ffd6bf;
+            margin-bottom: 1rem;
+        }
+
+        .desc {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: #c5d2e4;
+        }
+
+        .divider {
+            width: 64px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 179, 138, 0.9), rgba(67, 217, 173, 0.8));
+            border-radius: 2px;
+            margin: 1rem 0 1rem;
+        }
+
+        .hint {
+            font-size: 0.84rem;
+            color: #95a7c0;
+            margin-top: 0.75rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.65rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .home-link,
+        .secondary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
+            padding: 0 0.9rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .home-link {
+            color: #1b1f2d;
+            background: linear-gradient(130deg, #ffb38a, #ffd6bf);
+            box-shadow: 0 6px 14px rgba(255, 179, 138, 0.25);
+        }
+
+        .secondary-link {
+            color: #d9e5f4;
+            background: rgba(21, 30, 46, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .home-link:hover,
+        .secondary-link:hover {
+            transform: translateY(-1px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 520px) {
+            .teapot-container {
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1.8rem 1.2rem;
+            }
+
+            .text-side {
+                text-align: center;
+            }
+
+            .divider {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="teapot-container">
+        <div class="icon-side">
+            <div class="teapot-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 15c0-4 2-6 0-10" stroke="#67f39d" stroke-width="2.2" stroke-linecap="round" opacity="0.55">
+                        <animate attributeName="opacity" values="0.35;0.85;0.35" dur="2.1s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M32 12c0-3.2 1.2-4.8 0-8" stroke="#67f39d" stroke-width="2.8" stroke-linecap="round" opacity="0.9">
+                        <animate attributeName="opacity" values="0.55;1;0.55" dur="1.7s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M39 15c0-4 2-6 0-10" stroke="#67f39d" stroke-width="2.2" stroke-linecap="round" opacity="0.55">
+                        <animate attributeName="opacity" values="0.35;0.8;0.35" dur="2.2s" repeatCount="indefinite" />
+                    </path>
+                    <rect x="20" y="18" width="24" height="4" rx="2" fill="#67f39d" />
+                    <circle cx="32" cy="17" r="2.1" fill="#67f39d" />
+                    <path d="M20 22h24v17c0 7-5 12-12 12s-12-5-12-12V22z" fill="#4ccf7a" stroke="#67f39d" stroke-width="2" />
+                    <path d="M20 28c-5 0-9 3.8-9 8.5S15 45 20 45" stroke="#67f39d" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                </svg>
+            </div>
+        </div>
+        <div class="text-side">
+            <div class="status-badge">HTTP Status</div>
+            <div class="error-code">418</div>
+            <h1>I'm a teapot</h1>
+            <p class="desc">요청은 받았지만, 이 서버는 커피 머신이 아니라 찻주전자입니다.</p>
+            <div class="divider"></div>
+            <p class="desc">RFC 2324의 농담 같은 상태 코드지만, 이 페이지는 진심으로 차를 권합니다.</p>
+            <p class="hint">RFC 2324 - Hyper Text Coffee Pot Control Protocol</p>
+            <div class="actions">
+                <a href="/" class="home-link">Back to Home</a>
+                <a href="/418" class="secondary-link">Refresh Teapot</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

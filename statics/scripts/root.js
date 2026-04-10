@@ -18,36 +18,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Initialize Particles.js background
     if (typeof particlesJS !== 'undefined') {
+        const ua = navigator.userAgent.toLowerCase();
+        const isFirefox = ua.includes('firefox');
+        const isMac = ua.includes('mac os x');
+        const isMacFirefox = isFirefox && isMac;
+        const isMobileViewport = window.matchMedia('(max-width: 900px)').matches;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const lowPowerMode = isFirefox || isMobileViewport || prefersReducedMotion;
+
+        if (isMacFirefox) {
+            const particlesRoot = document.getElementById('particles-js');
+            if (particlesRoot) {
+                particlesRoot.style.display = 'none';
+            }
+            return;
+        }
+
         particlesJS('particles-js', {
             particles: {
                 number: {
-                    value: 60,
+                    value: lowPowerMode ? 20 : 40,
                     density: {
                         enable: true,
-                        value_area: 900
+                        value_area: lowPowerMode ? 1200 : 950
                     }
                 },
                 color: {
-                    value: '#d2a8ff'
+                    value: '#ffb38a'
                 },
                 shape: {
                     type: 'circle'
                 },
                 opacity: {
-                    value: 0.5,
+                    value: lowPowerMode ? 0.35 : 0.45,
                     random: true,
                     anim: {
-                        enable: true,
+                        enable: false,
                         speed: 1,
                         opacity_min: 0.1,
                         sync: false
                     }
                 },
                 size: {
-                    value: 3,
+                    value: lowPowerMode ? 2.2 : 2.8,
                     random: true,
                     anim: {
-                        enable: true,
+                        enable: false,
                         speed: 2,
                         size_min: 0.5,
                         sync: false
@@ -55,16 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 line_linked: {
                     enable: true,
-                    distance: 150,
-                    color: '#d2a8ff',
-                    opacity: 0.2,
+                    distance: lowPowerMode ? 120 : 145,
+                    color: '#ffb38a',
+                    opacity: lowPowerMode ? 0.12 : 0.18,
                     width: 1
                 },
                 move: {
                     enable: true,
-                    speed: 1.5,
+                    speed: lowPowerMode ? 0.6 : 1.1,
                     direction: 'none',
-                    random: true,
+                    random: false,
                     straight: false,
                     out_mode: 'out',
                     bounce: false
@@ -74,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 detect_on: 'canvas',
                 events: {
                     onhover: {
-                        enable: true,
+                        enable: !lowPowerMode,
                         mode: 'grab'
                     },
                     onclick: {
-                        enable: true,
+                        enable: !lowPowerMode,
                         mode: 'push'
                     },
                     resize: true
@@ -95,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             },
-            retina_detect: true
+            retina_detect: !lowPowerMode
         });
     } else {
         console.error('Particles.js is not loaded.');

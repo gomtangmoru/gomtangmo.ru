@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const dischargeDate = new Date('2027-12-19T00:00:00+09:00');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    dischargeDate.setHours(0, 0, 0, 0);
+    
+    const diffTime = dischargeDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    const badge = document.getElementById('dday-badge');
+    if (badge) {
+        if (diffDays > 0) {
+            badge.innerText = `D-${diffDays}`;
+        } else if (diffDays === 0) {
+            badge.innerText = `D-Day`;
+        } else {
+            badge.innerText = `전역`;
+        }
+    }
+
     // 1. Easter Egg Script
     let profileClickCount = 0;
     const profileContainer = document.getElementById('profileImageContainer');
